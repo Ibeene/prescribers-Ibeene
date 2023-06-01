@@ -1,0 +1,25 @@
+(select count (name)
+from athletes
+inner join summer_games as summer
+on athletes.id=summer.athlete_id)
+union
+(select count(name)
+from athletes
+inner join winter_games as winter
+on athletes.id=winter.athlete_id)
+
+--4
+select country,count(summer.bronze),count(winter.bronze)
+from countries as c
+inner join summer_games as summer
+on c.id=summer.country_id
+inner join winter_games as winter
+on c.id=winter.country_id
+group by country;
+
+select country,count(summer.bronze),count(winter.bronze)
+from countries as c
+inner join summer_games as summer
+on c.id=summer.country_id
+inner join winter_games as winter
+on c.id=winter.country_id
